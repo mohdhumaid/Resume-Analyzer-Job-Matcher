@@ -6,11 +6,20 @@ import spacy
 import re
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-
+import spacy.cli
 # --- Caching models ---
 @st.cache_resource
+
 def load_models():
-    return spacy.load("en_core_web_sm"), SentenceTransformer('all-MiniLM-L6-v2')
+    try:
+        nlp = spacy.load("en_core_web_sm")
+    except OSError:
+        spacy.cli.download("en_core_web_sm")
+        nlp = spacy.load("en_core_web_sm")
+
+    embedder = SentenceTransformer('all-MiniLM-L6-v2')
+    return nlp, embedder
+
 
 nlp, embedder = load_models()
 
