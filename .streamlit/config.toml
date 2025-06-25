@@ -1,0 +1,16 @@
+[theme]
+primaryColor = "#4CAF50"         # A modern green shade
+backgroundColor = "#F9FAFB"      # Very light gray, soft on eyes
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#000000"            # Black text for strong readability
+font = "sans serif"              # Clean font
+base = "light"                   # Light theme base
+
+[server]
+headless = true
+port = 8501
+enableCORS = false
+
+[ui]
+hideSidebarNav = false
+pageTitle = "Resume Analyzer + Matcher"
