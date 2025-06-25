@@ -10,14 +10,18 @@ import spacy.cli
 # --- Caching models ---
 @st.cache_resource
 
+
+@st.cache_resource
 def load_models():
+    import spacy
+    from sentence_transformers import SentenceTransformer
+
     try:
         nlp = spacy.load("en_core_web_sm")
-    except OSError:
-        spacy.cli.download("en_core_web_sm")
-        nlp = spacy.load("en_core_web_sm")
+    except:
+        nlp = spacy.blank("en")  # Use blank English model if full one can't load
 
-    embedder = SentenceTransformer('all-MiniLM-L6-v2')
+    embedder = SentenceTransformer("all-MiniLM-L6-v2")
     return nlp, embedder
 
 
