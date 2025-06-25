@@ -1,6 +1,6 @@
 streamlit
 spacy
-PyMuPDF
 sentence-transformers
 scikit-learn
+PyMuPDF
 numpy
